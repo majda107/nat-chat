@@ -9,6 +9,14 @@ namespace NatChatCore
         public IPEndPoint Endpoint { get; set; }
 
         public DateTime LastValid { get; set; }
+        public bool Suspended { get; set; } = false;
+
+
+        public int PastSeconds
+        {
+            get => (int) ((DateTime.Now - this.LastValid).TotalSeconds);
+        }
+
 
         public MagicToken(string token)
         {

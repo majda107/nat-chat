@@ -17,6 +17,9 @@
 <input placeholder="message" @bind="message">
 <button @onclick="() => { Send(); }">Send</button>
 
+<button @onclick="() => { SendAllUsers(); }">[Send all users]</button>
+<button @onclick="() => { RequestKeepalive(); }">[Request Keepalive]</button>
+
 <hr/>
 
 <Users></Users>
@@ -41,8 +44,22 @@
     private void Send()
     {
         cs.Processor.Send(new Packet {Cmd = PacketType.Message, Value = message});
+
+        this.messages.Add($"[YOU] {message}");
+
         this.message = "";
         this.StateHasChanged();
+    }
+
+    private void SendAllUsers()
+    {
+        var col = cs.Processor.Remotes.Select(s => s.Token);
+        cs.Processor.Send(new Packet {Cmd = PacketType.Discover, Value = String.Join(';', col)});
+    }
+
+    private void RequestKeepalive()
+    {
+        cs.Processor.Send(new Packet {Cmd = PacketType.Keepalive});
     }
 
 }

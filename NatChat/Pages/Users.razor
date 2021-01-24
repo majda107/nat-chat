@@ -5,9 +5,24 @@
 <ul>
     @foreach (var user in this.cs.Processor.Remotes)
     {
-        <li>
-            @user.Alias - @user.Endpoint - @user.Token - @((int) ((DateTime.Now - user.LastValid).TotalSeconds))s ago
-        </li>
+        @if (user.Suspended)
+        {
+            <li style="color: red">
+                @user.Alias - @user.Endpoint - @user.Token - SUSPENDED
+            </li>
+        }
+        else if (user.PastSeconds > 60)
+        {
+            <li class="old">
+                @user.Alias - @user.Endpoint - @user.Token - @(user.PastSeconds)s ago
+            </li>
+        }
+        else
+        {
+            <li>
+                @user.Alias - @user.Endpoint - @user.Token - @(user.PastSeconds)s ago
+            </li>
+        }
     }
 </ul>
 
@@ -29,6 +44,7 @@
     private void Add()
     {
         this.cs.Processor.AddEndpoint(new MagicUser(this.token, this.alias));
+        this.cs.Processor.Send(new Packet {Cmd = PacketType.Discover, Value = this.token});
 
         this.token = this.alias = "";
         this.StateHasChanged();

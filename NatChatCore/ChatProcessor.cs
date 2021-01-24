@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,7 +17,7 @@ namespace NatChatCore
         public UdpClient Client { get; set; }
         public MagicToken Me { get; set; }
 
-        public List<MagicUser> Remotes { get; set; }
+        public ConcurrentBag<MagicUser> Remotes { get; set; }
 
 
         public event EventHandler KeepaliveTick;
@@ -30,7 +31,7 @@ namespace NatChatCore
             this.InitStun();
 
             this.Client = new UdpClient(this.Endpoint);
-            this.Remotes = new List<MagicUser>();
+            this.Remotes = new ConcurrentBag<MagicUser>();
 
             this.StartKeepAlive();
             this.StartReceiving();
@@ -63,6 +64,10 @@ namespace NatChatCore
                         this.Send(new Packet {Cmd = PacketType.Keepalive});
                         count = 0;
                     }
+
+                    foreach (var u in this.Remotes)
+                        if (u.PastSeconds >= 120)
+                            u.Suspended = true;
                 }
             });
 
@@ -102,11 +107,14 @@ namespace NatChatCore
             foreach (var magic in this.Remotes)
                 try
                 {
+                    if (magic.Suspended) continue; // IGNORE SUSPENDED
+
                     this.Client.Send(bytes, bytes.Length, magic.Endpoint);
                 }
                 catch (Exception e)
                 {
-                    this.Logger.LogError($"Invalid endpoint! Removing... {magic.Endpoint} {e.Message}");
+                    this.Logger.LogError($"Invalid endpoint! Suspending... {magic.Endpoint} {e.Message}");
+                    magic.Suspended = true;
                 }
         }
 
@@ -135,6 +143,7 @@ namespace NatChatCore
             }
 
             // SEND ALL ADDED
+            if (added.Count <= 0) return;
             this.Send(new Packet {Cmd = PacketType.Discover, Value = String.Join(';', added)});
         }
 
@@ -147,18 +156,21 @@ namespace NatChatCore
         public void Receive(Packet p)
         {
             this.Logger.LogDeafen($"Received {p.Cmd} packet | '{p.Value}'");
+
+            var user = this.Remotes.FirstOrDefault(m => m.Token == p.Magic.Token);
+            if (user != null && user.Suspended)
+                user.Suspended = false; // UNSUSPEND
+
             switch (p.Cmd)
             {
                 case PacketType.Message:
-                    var user2 = this.Remotes.FirstOrDefault(u => u.Token == p.Magic.Token);
-                    if (user2 != null)
-                        this.Logger.Log($"-> [{user2.Alias}] {p.Value}");
+                    if (user != null)
+                        this.Logger.Log($"-> [{user.Alias}] {p.Value}");
                     else
                         this.Logger.Log($"-> [{p.Magic.Token}] {p.Value}");
 
                     break;
                 case PacketType.Keepalive:
-                    var user = this.Remotes.FirstOrDefault(m => m.Token == p.Magic.Token);
                     if (user != null)
                         user.LastValid = DateTime.Now;
 
