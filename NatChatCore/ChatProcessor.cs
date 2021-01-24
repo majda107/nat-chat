@@ -83,6 +83,9 @@ namespace NatChatCore
                     try
                     {
                         var remoteEp = new IPEndPoint(IPAddress.Any, 0);
+
+                        // this.Client.AllowNatTraversal(true);
+
                         var bytes = this.Client.Receive(ref remoteEp);
                         // Console.WriteLine($"{remoteEp} -> {Encoding.ASCII.GetString(msg)}");
                         var message = Encoding.ASCII.GetString(bytes);
@@ -177,10 +180,14 @@ namespace NatChatCore
 
                     break;
                 case PacketType.Keepalive:
-                    if (user != null)
-                        user.LastValid = DateTime.Now;
+                    // if (user != null)
+                    //     user.LastValid = DateTime.Now;
 
                     this.Send(new Packet {Cmd = PacketType.KeepaliveReply}, p.Magic.Endpoint);
+                    break;
+                case PacketType.KeepaliveReply:
+                    if (user != null)
+                        user.LastValid = DateTime.Now;
                     break;
                 case PacketType.Discover:
                     this.IntersectDiscover(p);

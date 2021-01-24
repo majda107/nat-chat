@@ -1,0 +1,38 @@
+@using MoonSharp.Interpreter
+
+@page "/lua"
+<h3>Lua</h3>
+
+@(res?.ToString() ?? "")
+
+<span style="color: red">@message</span>
+
+<hr/>
+
+<textarea @bind="code"></textarea>
+
+<button @onclick="() => { Execute(); }">Execute</button>
+
+@code {
+    private string code;
+    private DynValue res;
+
+    private string message;
+
+    void Execute()
+    {
+        this.message = "";
+
+        try
+        {
+            this.res = Script.RunString(code);
+        }
+        catch (Exception e)
+        {
+            message = e.Message;
+        }
+
+        this.StateHasChanged();
+    }
+
+}

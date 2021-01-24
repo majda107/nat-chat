@@ -1,5 +1,6 @@
 @page "/chat"
 @using System.Text
+@using MoonSharp.Interpreter
 @inject ChatService cs;
 
 <h3>Chat</h3>
@@ -24,13 +25,21 @@
 
 <hr/>
 
+
 <Users></Users>
+
+<hr/>
+
+<h4>Lua message factory</h4>
+<textarea style="width: 600px; height: 400px;" @bind="luaCode"></textarea>
+<button class="btn btn-warning" @onclick="() => { SendLua(); }">[LUA MESSAGE]</button>
 
 
 @code {
     private List<string> messages = new List<string>();
 
     private string message = "";
+    private string luaCode = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -70,6 +79,25 @@
     private void RequestKeepalive()
     {
         cs.Processor.Send(new Packet {Cmd = PacketType.Keepalive});
+    }
+
+
+    private void SendLua()
+    {
+        try
+        {
+            var res = Script.RunString(this.luaCode);
+            var s = res.ToString();
+
+            Console.WriteLine($"Sending: {s}");
+            cs.Processor.Send(new Packet {Cmd = PacketType.Message, Value = s});
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+
+        this.StateHasChanged();
     }
 
 }

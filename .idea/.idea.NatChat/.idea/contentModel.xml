@@ -33,6 +33,7 @@
           <e p="Error.cshtml.cs" t="Include" />
           <e p="FetchData.razor" t="Include" />
           <e p="Index.razor" t="Include" />
+          <e p="Lua.razor" t="Include" />
           <e p="Users.razor" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
