@@ -1,0 +1,37 @@
+@inject ChatService cs;
+
+<h3>Users</h3>
+
+<ul>
+    @foreach (var user in this.cs.Processor.Remotes)
+    {
+        <li>
+            @user.Alias - @user.Endpoint - @user.Token - @((int) ((DateTime.Now - user.LastValid).TotalSeconds))s ago
+        </li>
+    }
+</ul>
+
+<input placeholder="token" @bind="token"/>
+<input placeholder="alias" @bind="alias"/>
+
+<button @onclick="() => { Add(); }">Add</button>
+
+@code {
+
+    private string token = "";
+    private string alias = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.cs.Processor.KeepaliveTick += (o, e) => this.InvokeAsync(this.StateHasChanged);
+    }
+
+    private void Add()
+    {
+        this.cs.Processor.AddEndpoint(new MagicUser(this.token, this.alias));
+
+        this.token = this.alias = "";
+        this.StateHasChanged();
+    }
+
+}

@@ -1,0 +1,48 @@
+@page "/chat"
+@inject ChatService cs;
+
+<h3>Chat</h3>
+
+<span>Magic token: @this.cs.Processor.Me.Token</span>
+
+<ul>
+    @foreach (var m in messages)
+    {
+        <li>
+            @m
+        </li>
+    }
+</ul>
+
+<input placeholder="message" @bind="message">
+<button @onclick="() => { Send(); }">Send</button>
+
+<hr/>
+
+<Users></Users>
+
+
+@code {
+    private List<string> messages = new List<string>();
+
+    private string message = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        cs.Processor.Logger.OnLog += (o, e) =>
+        {
+            messages.Add(e);
+            this.InvokeAsync(this.StateHasChanged);
+        };
+
+        this.StateHasChanged();
+    }
+
+    private void Send()
+    {
+        cs.Processor.Send(new Packet {Cmd = PacketType.Message, Value = message});
+        this.message = "";
+        this.StateHasChanged();
+    }
+
+}
