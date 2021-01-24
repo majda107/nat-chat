@@ -19,13 +19,17 @@ namespace NatChatCore
             var match = Re.Match(msg);
             if (!match.Success) return false;
 
-            p = new Packet
+            if (int.TryParse(match.Groups["cmd"].Value, out int cmd))
             {
-                Cmd = (PacketType) int.Parse(match.Groups["cmd"].Value), Value = match.Groups["value"].Value,
-                Magic = new MagicToken(ep)
-            };
+                p = new Packet
+                {
+                    Cmd = (PacketType) int.Parse(match.Groups["cmd"].Value), Value = match.Groups["value"].Value,
+                    Magic = new MagicToken(ep)
+                };
+                return true;
+            }
 
-            return true;
+            return false;
         }
 
         public byte[] ToByteArray()

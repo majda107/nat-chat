@@ -10,11 +10,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fec4b734-dbba-49fe-ad4d-da37c865cf10" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NatChat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NatChat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NatChat/Pages/Chat.razor" beforeDir="false" afterPath="$PROJECT_DIR$/NatChat/Pages/Chat.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NatChat/Pages/Users.razor" beforeDir="false" afterPath="$PROJECT_DIR$/NatChat/Pages/Users.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NatChat/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/NatChat/wwwroot/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NatChatCore/ChatProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NatChatCore/ChatProcessor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NatChatCore/MagicToken.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NatChatCore/MagicToken.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NatChatCore/Packet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NatChatCore/Packet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +26,6 @@
         <option value="$PROJECT_DIR$/NatChatCore/Class1.cs" />
         <option value="$PROJECT_DIR$/NatChatCore/Pakcet.cs" />
         <option value="$PROJECT_DIR$/NatChatCore/PacketType.cs" />
-        <option value="$PROJECT_DIR$/NatChatCore/Packet.cs" />
         <option value="$PROJECT_DIR$/NatChatCore/Processor.cs" />
         <option value="$PROJECT_DIR$/NatChatCore/Logger.cs" />
         <option value="$PROJECT_DIR$/NatChat/Services/ChatService.cs" />
@@ -39,9 +34,10 @@
         <option value="$PROJECT_DIR$/NatChat/_Imports.razor" />
         <option value="$PROJECT_DIR$/NatChat/wwwroot/css/site.css" />
         <option value="$PROJECT_DIR$/NatChatCore/MagicToken.cs" />
-        <option value="$PROJECT_DIR$/NatChat/Pages/Users.razor" />
         <option value="$PROJECT_DIR$/NatChatCore/ChatProcessor.cs" />
         <option value="$PROJECT_DIR$/NatChat/Pages/Chat.razor" />
+        <option value="$PROJECT_DIR$/NatChat/Pages/Users.razor" />
+        <option value="$PROJECT_DIR$/NatChatCore/Packet.cs" />
       </list>
     </option>
   </component>
@@ -99,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611498495043</updated>
-      <workItem from="1611498501768" duration="7914000" />
+      <workItem from="1611498501768" duration="8351000" />
     </task>
     <servers />
   </component>
@@ -123,89 +119,108 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1627" height="377" key="GridCell.Tab.0.bottom" timestamp="1611514582932">
+    <state width="1627" height="377" key="GridCell.Tab.0.bottom" timestamp="1611514602221">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.0.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582932" />
-    <state width="1627" height="377" key="GridCell.Tab.0.center" timestamp="1611514582931">
+    <state width="1627" height="377" key="GridCell.Tab.0.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602221" />
+    <state width="1627" height="377" key="GridCell.Tab.0.center" timestamp="1611514602221">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.0.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582931" />
-    <state width="1627" height="377" key="GridCell.Tab.0.left" timestamp="1611514582931">
+    <state width="1627" height="377" key="GridCell.Tab.0.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602221" />
+    <state width="1627" height="377" key="GridCell.Tab.0.left" timestamp="1611514602220">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.0.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582931" />
-    <state width="1627" height="377" key="GridCell.Tab.0.right" timestamp="1611514582931">
+    <state width="1627" height="377" key="GridCell.Tab.0.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602220" />
+    <state width="1627" height="377" key="GridCell.Tab.0.right" timestamp="1611514602221">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.0.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582931" />
-    <state width="1627" height="377" key="GridCell.Tab.1.bottom" timestamp="1611514582933">
+    <state width="1627" height="377" key="GridCell.Tab.0.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602221" />
+    <state width="1627" height="377" key="GridCell.Tab.1.bottom" timestamp="1611514602222">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.1.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582933" />
-    <state width="1627" height="377" key="GridCell.Tab.1.center" timestamp="1611514582933">
+    <state width="1627" height="377" key="GridCell.Tab.1.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602222" />
+    <state width="1627" height="377" key="GridCell.Tab.1.center" timestamp="1611514602222">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.1.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582933" />
-    <state width="1627" height="377" key="GridCell.Tab.1.left" timestamp="1611514582932">
+    <state width="1627" height="377" key="GridCell.Tab.1.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602222" />
+    <state width="1627" height="377" key="GridCell.Tab.1.left" timestamp="1611514602221">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.1.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582932" />
-    <state width="1627" height="377" key="GridCell.Tab.1.right" timestamp="1611514582933">
+    <state width="1627" height="377" key="GridCell.Tab.1.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602221" />
+    <state width="1627" height="377" key="GridCell.Tab.1.right" timestamp="1611514602222">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.1.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582933" />
-    <state width="1627" height="377" key="GridCell.Tab.2.bottom" timestamp="1611514582934">
+    <state width="1627" height="377" key="GridCell.Tab.1.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602222" />
+    <state width="1627" height="377" key="GridCell.Tab.2.bottom" timestamp="1611514602223">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.2.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582934" />
-    <state width="1627" height="377" key="GridCell.Tab.2.center" timestamp="1611514582934">
+    <state width="1627" height="377" key="GridCell.Tab.2.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602223" />
+    <state width="1627" height="377" key="GridCell.Tab.2.center" timestamp="1611514602223">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.2.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582934" />
-    <state width="1627" height="377" key="GridCell.Tab.2.left" timestamp="1611514582934">
+    <state width="1627" height="377" key="GridCell.Tab.2.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602223" />
+    <state width="1627" height="377" key="GridCell.Tab.2.left" timestamp="1611514602223">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.2.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582934" />
-    <state width="1627" height="377" key="GridCell.Tab.2.right" timestamp="1611514582934">
+    <state width="1627" height="377" key="GridCell.Tab.2.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602223" />
+    <state width="1627" height="377" key="GridCell.Tab.2.right" timestamp="1611514602223">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.2.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582934" />
-    <state width="1627" height="377" key="GridCell.Tab.3.bottom" timestamp="1611514582935">
+    <state width="1627" height="377" key="GridCell.Tab.2.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602223" />
+    <state width="1627" height="377" key="GridCell.Tab.3.bottom" timestamp="1611514602224">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.3.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582935" />
-    <state width="1627" height="377" key="GridCell.Tab.3.center" timestamp="1611514582935">
+    <state width="1627" height="377" key="GridCell.Tab.3.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602224" />
+    <state width="1627" height="377" key="GridCell.Tab.3.center" timestamp="1611514602224">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.3.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582935" />
-    <state width="1627" height="377" key="GridCell.Tab.3.left" timestamp="1611514582935">
+    <state width="1627" height="377" key="GridCell.Tab.3.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602224" />
+    <state width="1627" height="377" key="GridCell.Tab.3.left" timestamp="1611514602224">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.3.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582935" />
-    <state width="1627" height="377" key="GridCell.Tab.3.right" timestamp="1611514582935">
+    <state width="1627" height="377" key="GridCell.Tab.3.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602224" />
+    <state width="1627" height="377" key="GridCell.Tab.3.right" timestamp="1611514602224">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.3.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582935" />
-    <state width="1627" height="377" key="GridCell.Tab.4.bottom" timestamp="1611514582936">
+    <state width="1627" height="377" key="GridCell.Tab.3.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602224" />
+    <state width="1627" height="377" key="GridCell.Tab.4.bottom" timestamp="1611514602225">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.4.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582936" />
-    <state width="1627" height="377" key="GridCell.Tab.4.center" timestamp="1611514582936">
+    <state width="1627" height="377" key="GridCell.Tab.4.bottom/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602225" />
+    <state width="1627" height="377" key="GridCell.Tab.4.center" timestamp="1611514602225">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.4.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582936" />
-    <state width="1627" height="377" key="GridCell.Tab.4.left" timestamp="1611514582936">
+    <state width="1627" height="377" key="GridCell.Tab.4.center/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602225" />
+    <state width="1627" height="377" key="GridCell.Tab.4.left" timestamp="1611514602225">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.4.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582936" />
-    <state width="1627" height="377" key="GridCell.Tab.4.right" timestamp="1611514582936">
+    <state width="1627" height="377" key="GridCell.Tab.4.left/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602225" />
+    <state width="1627" height="377" key="GridCell.Tab.4.right" timestamp="1611514602225">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
-    <state width="1627" height="377" key="GridCell.Tab.4.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514582936" />
+    <state width="1627" height="377" key="GridCell.Tab.4.right/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611514602225" />
     <state x="879" y="428" key="Rider.ProjectTemplateDialog.Size" timestamp="1611498535743">
       <screen x="0" y="25" width="2560" height="1342" />
     </state>
     <state x="879" y="428" key="Rider.ProjectTemplateDialog.Size/0.25.2560.1342/2560.322.1680.1025@0.25.2560.1342" timestamp="1611498535743" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/NatChatCore/MagicUser.cs</url>
+          <line>15</line>
+          <properties documentPath="$PROJECT_DIR$/NatChatCore/MagicUser.cs" initialLine="15">
+            <startOffsets>
+              <option value="339" />
+            </startOffsets>
+            <endOffsets>
+              <option value="358" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
