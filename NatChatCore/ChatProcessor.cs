@@ -102,7 +102,7 @@ namespace NatChatCore
             this.receiveThread.Start();
         }
 
-        private void SendAll(byte[] bytes)
+        public void SendAll(byte[] bytes)
         {
             foreach (var magic in this.Remotes)
                 try

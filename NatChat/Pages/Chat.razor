@@ -1,4 +1,5 @@
 @page "/chat"
+@using System.Text
 @inject ChatService cs;
 
 <h3>Chat</h3>
@@ -16,6 +17,7 @@
 
 <input placeholder="message" @bind="message">
 <button class="btn btn-primary" @onclick="() => { Send(); }">Send</button>
+<button class="btn btn-danger" @onclick="() => { SendRaw(); }">[Send raw]</button>
 
 <button class="btn btn-warning" @onclick="() => { SendAllUsers(); }">[Send all users]</button>
 <button class="btn-warning" @onclick="() => { RequestKeepalive(); }">[Request Keepalive]</button>
@@ -44,8 +46,16 @@
     private void Send()
     {
         cs.Processor.Send(new Packet {Cmd = PacketType.Message, Value = message});
-
         this.messages.Add($"[YOU] {message}");
+
+        this.message = "";
+        this.StateHasChanged();
+    }
+
+    private void SendRaw()
+    {
+        cs.Processor.SendAll(Encoding.ASCII.GetBytes(this.message));
+        this.messages.Add($"[YOU RAW] {message}");
 
         this.message = "";
         this.StateHasChanged();
