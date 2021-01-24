@@ -15,10 +15,10 @@
 </ul>
 
 <input placeholder="message" @bind="message">
-<button @onclick="() => { Send(); }">Send</button>
+<button class="btn btn-primary" @onclick="() => { Send(); }">Send</button>
 
-<button @onclick="() => { SendAllUsers(); }">[Send all users]</button>
-<button @onclick="() => { RequestKeepalive(); }">[Request Keepalive]</button>
+<button class="btn btn-warning" @onclick="() => { SendAllUsers(); }">[Send all users]</button>
+<button class="btn-warning" @onclick="() => { RequestKeepalive(); }">[Request Keepalive]</button>
 
 <hr/>
 
