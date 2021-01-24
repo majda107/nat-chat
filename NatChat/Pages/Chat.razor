@@ -30,7 +30,7 @@
 
 <hr/>
 
-<h4>Lua message factory</h4>
+<h4>Lua packet factory</h4>
 <textarea style="width: 600px; height: 400px;" @bind="luaCode"></textarea>
 <button class="btn btn-warning" @onclick="() => { SendLua(); }">[LUA MESSAGE]</button>
 
@@ -87,10 +87,10 @@
         try
         {
             var res = Script.RunString(this.luaCode);
-            var s = res.ToString();
+            var s = res.String ?? "";
 
             Console.WriteLine($"Sending: {s}");
-            cs.Processor.Send(new Packet {Cmd = PacketType.Message, Value = s});
+            cs.Processor.SendRaw(s);
         }
         catch (Exception e)
         {
