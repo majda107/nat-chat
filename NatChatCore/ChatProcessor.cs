@@ -102,7 +102,13 @@ namespace NatChatCore
             this.receiveThread.Start();
         }
 
-        public void SendAll(byte[] bytes)
+        public void SendRaw(string message)
+        {
+            Logger.LogDeafen($"Sending as a RAW '{message}'");
+            this.SendAll(Encoding.ASCII.GetBytes(message));
+        }
+
+        private void SendAll(byte[] bytes)
         {
             foreach (var magic in this.Remotes)
                 try

@@ -54,7 +54,7 @@
 
     private void SendRaw()
     {
-        cs.Processor.SendAll(Encoding.ASCII.GetBytes(this.message));
+        cs.Processor.SendRaw(this.message);
         this.messages.Add($"[YOU RAW] {message}");
 
         this.message = "";
