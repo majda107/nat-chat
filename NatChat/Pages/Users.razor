@@ -8,19 +8,19 @@
         @if (user.Suspended)
         {
             <li style="color: red">
-                @user.Alias - @user.Endpoint - @user.Token - SUSPENDED
+                @user.Alias - @user.Endpoint - @user.Token - SUSPENDED <button class="btn btn-danger" @onclick="() => { Revoke(user); }">REVOKE</button>
             </li>
         }
         else if (user.PastSeconds > 60)
         {
             <li class="old">
-                @user.Alias - @user.Endpoint - @user.Token - @(user.PastSeconds)s ago
+                @user.Alias - @user.Endpoint - @user.Token - @(user.PastSeconds)s ago <button class="btn btn-danger" @onclick="() => { Revoke(user); }">REVOKE</button>
             </li>
         }
         else
         {
             <li>
-                @user.Alias - @user.Endpoint - @user.Token - @(user.PastSeconds)s ago
+                @user.Alias - @user.Endpoint - @user.Token - @(user.PastSeconds)s ago <button class="btn btn-danger" @onclick="() => { Revoke(user); }">REVOKE</button>
             </li>
         }
     }
@@ -48,6 +48,11 @@
 
         this.token = this.alias = "";
         this.StateHasChanged();
+    }
+
+    private void Revoke(MagicUser user)
+    {
+        this.cs.Processor.RevokeEndpoint(user);
     }
 
 }
